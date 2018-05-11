@@ -40,7 +40,7 @@ def main(
   xlabel,
   ylabel,
 ):
-  # Simply creates a cdf of the input data. Input foramt one number per line.
+  # Input format one number per line.
   with open(input_data, 'r') as inf:
     print('Reading:', input_data)
     data = inf.read().split('\n')
@@ -56,6 +56,7 @@ def main(
 
   # CDFify
   cdfData = plot.CDFify(floatData)
+
   # Add a starting 0 to the x and y axis
   cdfData[0] = [0] + cdfData[0]
   cdfData[1] = [0] + cdfData[1]
@@ -67,7 +68,7 @@ def main(
   labels.append('CDF data')
 
 
-  # Plot the data, and save results of specified outputpath + servicname
+  # Plot the data, and save results.
   plt = plot.drawPlot(
     r=plotData,
     xlabel=xlabel,
