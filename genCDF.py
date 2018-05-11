@@ -30,7 +30,8 @@ def computeStats(input_data):
 
 """
 Main entry point for stats and cdf. 
-Requires input file path, output plot, and optional titles
+Requires input file path, output plot.
+Optional labels.
 """
 def main(
   input_data,
@@ -47,7 +48,7 @@ def main(
   # Remove empty strings from list
   sanitizedList = list(filter(None, data))
 
-  # Convert data to float and remove empty strings
+  # Convert data to float
   floatData = [float(x) for x in sanitizedList]
 
   # Print data stats
@@ -103,7 +104,7 @@ if __name__ == '__main__':
   parser.add_argument(
     '-if',
     '--input_data_file',
-    help='Relateive path to input data file for CDF',
+    help='Relative path to input data file for CDF',
     type=str,
     required=True,
   )
