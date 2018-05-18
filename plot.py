@@ -146,6 +146,7 @@ def drawPlot(
         tmp_x.append(xnum)
 
       # calc the trendline (it is simply a polynomial fitting)
+      # http://widu.tumblr.com/post/43624347354/matplotlib-trendline
       z = np.polyfit(tmp_x, rec[1], deg=30)
       p = np.poly1d(z)
       ax.plot(
@@ -345,6 +346,7 @@ def drawBarPlot(
   leg_loc,
   return_plt=False,
   outside_legend=False,
+  rotation=70,
   alpha=1,
 ):
   """
@@ -365,11 +367,12 @@ def drawBarPlot(
   ax.set_title(title)
 
   # Create a list of the number of bars we will plot
-  x_pos = list(range(len(r)))
+  x_pos = np.zeros(len(r))
 
   # Set the width for each bar
   width = 0.35
 
+  # https://matplotlib.org/examples/api/barchart_demo.html
   ax.bar(
     np.arange(len(r)),
     r,
@@ -384,10 +387,11 @@ def drawBarPlot(
     ax.legend(loc=leg_loc)
 
   # Set the x-axis labels
+  x_pos = list(range(len(r)))
   plt.xticks(x_pos, labels)
 
   # Set ticks labels for x-axis
-  ax.set_xticklabels(labels, rotation=70, fontsize=12)
+  ax.set_xticklabels(labels, rotation=rotation, fontsize=12)
 
   if return_plt:
     return plt
